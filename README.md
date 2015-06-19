@@ -12,7 +12,7 @@ Written in java ran in Tomcat . This servlet handle either request from client o
 with following parameter:
 <br>
 latitude-> latitude in string <br>
-longitude--> longitude in string
+longitude--> longitude in string<br>
 client--> for client request set as "1", for broadcaster can be anything<br>
 description---> Description of broadcaster, it will appear on google map marker<br>
 id---> Assign this string to different broadcaster. This id will become key when storing information about broadcaster.<br>
