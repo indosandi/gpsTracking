@@ -15,10 +15,9 @@ latitude-> latitude in string <br>
 longitude--> longitude in string
 client--> for client request set as "1", for broadcaster can be anything<br>
 description---> Description of broadcaster, it will appear on google map marker<br>
-id---> Assign this string to different broadcaster. This id will become key when storing information about broadcaster.
-
-Another important matter, server will periodically do cleaning or deleting broadcaster if after period of time broadcaster stop 
+id---> Assign this string to different broadcaster. This id will become key when storing information about broadcaster.<br>
+Server will periodically do cleaning or deleting broadcaster if after period of time broadcaster stop 
 updating information. Variables TIME_CLEAN_INTERVAL and TIME_EXPIRED specify those information.
-
-3. Client
+<br>
+3. Client<br>
 Client will periodically request to get new data from server. 
