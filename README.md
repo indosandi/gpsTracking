@@ -13,8 +13,8 @@ with following parameter:
 <br>
 latitude-> latitude in string <br>
 longitude--> longitude in string
-client--> for client request set as "1", for broadcaster can be anything
-description---> Description of broadcaster, it will appear on google map marker
+client--> for client request set as "1", for broadcaster can be anything<br>
+description---> Description of broadcaster, it will appear on google map marker<br>
 id---> Assign this string to different broadcaster. This id will become key when storing information about broadcaster.
 
 Another important matter, server will periodically do cleaning or deleting broadcaster if after period of time broadcaster stop 
