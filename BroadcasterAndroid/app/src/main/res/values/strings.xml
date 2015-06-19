@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Brodkez</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="urlserver">http://52.26.12.147:8080/serverandroid-0.0.1-SNAPSHOT/AcceptInfo</string>
+    <string name="clientParameter">client</string>
+    <string name="clientRequest">0</string>
+    <string name="IdParameter">id</string>
+    <string name="IdRequest">cumanTesting</string>
+    <string name="latParameter">latitude</string>
+    <string name="lngParameter">longitude</string>
+    <string name="dscrParameter">description</string>
+    <integer name="intervalUpdate">60000</integer>
+    <string name="tracking_is_off">Brodcast</string>
+    <string name="tracking_is_on">Stop</string>
+    <string name="reachability_error">error broadcasting</string>
+    <string name="gps_error">no gps stop broadcasting</string>
+    <string name="message_success">...now is broadcasting...</string>
+    <string name="message_no">not broadcasting</string>
+
+
+    <string name="user_name">user name</string>
+    <string name="description_name">Description</string>
+    <string name="initial_toast">starting broadcast</string>
+    <!--<string name="upload_website">upload website</string>-->
+    <string name="upload_frequency">Broadcast frequency</string>
+    <string name="one_minute">1 minute</string>
+    <string name="five_minutes">5 minutes</string>
+    <string name="fifteen_minutes">15 minutes</string>
+
+    <integer name="i1_interval">60000</integer>
+    <integer name="i5_interval">300000</integer>
+    <integer name="i15_interval">900000</integer>
+
+
+
+</resources>

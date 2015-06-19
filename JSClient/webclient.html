@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false?key=AIzaSyD3yU80k-6KgwWBbmcRw03zPF3axWmadxU
+">
+    </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    var dataR=""; 
+    var url="http://52.26.12.147:8080/serverandroid-0.0.1-SNAPSHOT/AcceptInfo";
+    var icount=0;
+    var interval=3000;
+    var arrayLat=new Array();
+    var arrayLong=new Array();
+    var arrayDes=new Array();
+    var numberOfResponse=0;
+    var numberOfInfo=3;
+
+    var map;	
+    var markers=[];
+    var infoWindows=[];
+
+    function initialize() {
+	var myLatlng = new google.maps.LatLng(40,0);
+    	var mapOptions = {
+    	    zoom: 4,
+    	    center: myLatlng
+    	  };
+    	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	var intervalID = setInterval(update,interval );
+}
+    	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function update(){
+		var centerLatLong=map.getCenter();
+                var bounds=map.getBounds();
+                var upperBounds=bounds.getNorthEast();
+                var lowerBounds=bounds.getSouthWest()
+                var latAve=Math.abs(upperBounds.lat()-centerLatLong.lat())+Math.abs(lowerBounds.lat()-centerLatLong.lat());
+                var lonAve=Math.abs(upperBounds.lng()-centerLatLong.lng())+Math.abs(lowerBounds.lng()-centerLatLong.lng());
+                latAve=latAve/2; 
+                lonAve=lonAve/2; 
+                console.log(map.getZoom())
+		$.post(url,
+		{
+		  latitude:centerLatLong.lat(),
+		  longitude:centerLatLong.lng(),
+		  id:"random",
+		  description:"random",
+		  client: "1",
+                  latDistance:latAve,
+                  lngDistance:lonAve,
+                  zoomLevel:map.getZoom()
+		},
+		function(data,status){
+		  dataR=data;
+		  console.log(dataR);
+		});
+
+	       GPSToString();
+		updateMap();
+	}
+	function GPSToString(){
+	  var arraySplit=dataR.split(";");
+	  numberOfResponse=arraySplit.length-1;
+	  arrayLat=[];
+	  arrayLong=[];
+	  arrayDes=[];
+	  for (var i=0;i<parseInt(numberOfResponse/numberOfInfo);i++) {
+            arrayLat.push(arraySplit[numberOfInfo*i]);
+            arrayLong.push(arraySplit[numberOfInfo*i+1]);
+            arrayDes.push(arraySplit[numberOfInfo*i+2]);
+       	  }
+	}
+	function deleteMarker(){
+		for(var i=0;i<markers.length;i++){
+			markers[i].setMap(null);
+			infoWindows[i].setMap(null);
+		}	
+		markers=[];
+		infoWindows=[];
+	}
+
+	function updateMap(){
+	 deleteMarker();
+
+	 var marker = new google.maps.Marker();
+	 var infowindow = new google.maps.InfoWindow();
+	for (i = 0; i <parseInt(numberOfResponse/numberOfInfo); i++) {  
+	      marker = new google.maps.Marker({
+         	position: new google.maps.LatLng(parseFloat(arrayLat[i]), parseFloat(arrayLong[i])),
+		map: map});
+	google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(arrayDes[i]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+		markers.push(marker);
+		infoWindows.push(infowindow);
+	}
+
+	}
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
+  </body>
+</html>
