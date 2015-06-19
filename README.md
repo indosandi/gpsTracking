@@ -1,5 +1,5 @@
 # gpsTracking
-Source code for Broadcast from Android device, processed by server and display it in webclient. This code is not designed to give
+Source code for broadcast from android device, processed by server and display it in webclient. This code is not designed to give
 realtime tracking. Use different technology such as websocket to get realtime tracking
 
 1. Broadcaster
