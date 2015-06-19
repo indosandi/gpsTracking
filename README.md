@@ -10,6 +10,7 @@ https://github.com/delight-im/Android-SimpleLocation
 2. Server
 Written in java ran in Tomcat . This servlet handle either request from client or broadcaster. Servlet will process post request
 with following parameter:
+<br>
 latitude-> latitude in string
 longitude--> longitude in string
 client--> for client request set as "1", for broadcaster can be anything
