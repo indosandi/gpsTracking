@@ -106,7 +106,6 @@ public class TimeService extends Service {
         }
         else{
             sendGPS(true);
-//            toastStr="Broadcasting";
             //initiate http post request
             if(shp==null){
                 shp=new sendHttpPost();
@@ -131,15 +130,12 @@ public class TimeService extends Service {
 
     @Override
     public void onDestroy() {
-//        Toast.makeText(this, "Broadcast is Stopped", Toast.LENGTH_LONG).show();
         InfoSentAct(false);
         if(mTimer != null) {
             mTimer.cancel();
 //            mTimer.purge();
 //            mTimer=null;
         }
-//        shp=null;
-//        gpsLocation=null;
     }
 
     class TimeDisplayTimerTask extends TimerTask {
@@ -152,11 +148,7 @@ public class TimeService extends Service {
                 @Override
                 public void run() {
                     updateStatus();
-//                    sendResult("test");
-                    // display toast
-//                    String str=getResources().getString(R.string.gps_error);
-//                    Toast.makeText(getApplicationContext(), toastStr,
-//                            Toast.LENGTH_SHORT).show();
+
                 }
 
             });
@@ -193,7 +185,6 @@ public class TimeService extends Service {
         longitude = gpsLocation.getLongitude();
         String latS=Double.toString(latitude);
         String lngS=Double.toString(longitude);
-//        String dscrStr="sandi disini";
 
 
         try {
@@ -208,7 +199,6 @@ public class TimeService extends Service {
 
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
-            // Log.v("kkk", EntityUtils.toString(response.getEntity()));
             dataR= EntityUtils.toString(response.getEntity());
             Log.v("data", dataR);
 
